@@ -1,0 +1,4 @@
+/* Intentionally lean: component styles live in section css files and global tokens/base files. */
+#root {
+  min-height: 100vh;
+}

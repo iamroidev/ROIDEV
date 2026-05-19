@@ -1,0 +1,205 @@
+.projects-container {
+  animation: riseIn var(--duration-slow) ease both;
+}
+
+.projects-content {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-4);
+}
+
+.project-card {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+  padding: var(--space-5);
+  display: grid;
+  grid-template-columns: minmax(250px, 0.9fr) minmax(0, 1.1fr);
+  align-items: stretch;
+  gap: var(--space-5);
+  min-height: 100%;
+  box-shadow: var(--shadow-soft);
+  transition: transform var(--duration-base) ease, box-shadow var(--duration-base) ease;
+  cursor: pointer;
+}
+
+.project-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-card);
+}
+
+.project-card.active {
+  border-color: #bfad99;
+}
+
+.project-main {
+  display: flex;
+  flex-direction: column;
+}
+
+.project-media {
+  display: flex;
+  align-items: center;
+}
+
+.project-title {
+  font-size: var(--text-lg);
+  margin-bottom: var(--space-3);
+  transition: color var(--duration-fast) ease;
+}
+
+.project-card:hover .project-title {
+  color: var(--color-accent-strong);
+}
+
+.project-description {
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+  margin-bottom: var(--space-3);
+  line-height: 1.55;
+}
+
+.project-impact {
+  margin: 0 0 var(--space-4);
+  padding-left: 1.15rem;
+  display: grid;
+  gap: 0.35rem;
+}
+
+.project-impact li {
+  color: #5f574e;
+  font-size: 0.84rem;
+  line-height: 1.5;
+}
+
+.tech-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-bottom: var(--space-4);
+}
+
+.tech-badge {
+  border: 1px solid var(--color-border);
+  background: var(--color-accent-soft);
+  color: var(--color-accent-strong);
+  border-radius: var(--radius-pill);
+  padding: 0.3rem 0.6rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+.project-actions {
+  margin-top: auto;
+}
+
+.project-link,
+.request-access-btn {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  background: var(--color-surface);
+  color: var(--color-accent-strong);
+  text-decoration: none;
+  padding: 0.58rem 0.95rem;
+  font-size: var(--text-sm);
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  cursor: pointer;
+  transition: background var(--duration-fast) ease, transform var(--duration-fast) ease;
+}
+
+.request-access-btn:hover,
+.project-link:hover {
+  background: var(--color-accent-soft);
+  transform: translateY(-1px);
+}
+
+.request-access-btn:focus-visible,
+.project-link:focus-visible,
+.mailto-btn:focus-visible,
+.modal-close:focus-visible {
+  outline: 2px solid rgba(86, 71, 56, 0.35);
+  outline-offset: 2px;
+}
+
+.request-access-btn {
+  font-family: inherit;
+}
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 11, 7, 0.4);
+  border: 0;
+  z-index: 120;
+}
+
+.request-modal {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: min(560px, calc(100% - 2rem));
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-text);
+  box-shadow: var(--shadow-card);
+  padding: var(--space-6);
+  z-index: 121;
+}
+
+.request-modal h3 {
+  margin-bottom: var(--space-3);
+}
+
+.request-modal p {
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-3);
+}
+
+.modal-close {
+  position: absolute;
+  top: 0.65rem;
+  right: 0.8rem;
+  border: 0;
+  background: transparent;
+  color: var(--color-text-muted);
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: color var(--duration-fast) ease;
+}
+
+.modal-close:hover {
+  color: var(--color-heading);
+}
+
+.mailto-btn {
+  display: inline-flex;
+  text-decoration: none;
+  border-radius: var(--radius-pill);
+  background: var(--color-accent-strong);
+  color: #fefaf5;
+  padding: 0.58rem 0.95rem;
+  font-weight: 700;
+  transition: filter var(--duration-fast) ease;
+}
+
+.mailto-btn:hover {
+  filter: brightness(0.95);
+}
+
+.modal-note {
+  margin-bottom: 0;
+  font-size: var(--text-xs);
+}
+
+@media (max-width: 1024px) {
+  .project-card {
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+  }
+}
