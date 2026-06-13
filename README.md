@@ -1,30 +1,68 @@
 # ROIDEV
 
-![Next.js](https://img.shields.io/badge/Next_js-333333?style=flat&logo=github) ![React](https://img.shields.io/badge/React-333333?style=flat&logo=github) ![TypeScript](https://img.shields.io/badge/TypeScript-333333?style=flat&logo=github) ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-333333?style=flat&logo=github) ![Framer Motion](https://img.shields.io/badge/Framer_Motion-333333?style=flat&logo=github) ![Vercel](https://img.shields.io/badge/Vercel-333333?style=flat&logo=github)
-
-## Overview
-
-ROIDEV is the professional personal portfolio website of Richard Kwaku Opoku, highlighting featured applications, core technical skills, experience, and contact forms.
+**Personal developer portfolio** for Richard Kwaku Opoku — single-page showcase with hero, about, skills, project slideshows, contact links, and CV download.
 
 ---
 
-## Key Features
+## Table of Contents
 
-- **High-fidelity responsive UI with glassmorphism styles**
-- **Dynamic dark/light mode context switching**
-- **Project showcase cards with live demo links**
-- **Contact form integration and download link for CV**
+- [System Design](#system-design)
+- [Features](#features)
+- [Technology Stack](#technology-stack)
+- [Getting Started](#getting-started)
+- [Deployment](#deployment)
+- [Project Structure](#project-structure)
+- [License](#license)
+
+---
+
+## System Design
+
+A **Create React App (CRA) single-page application** composed of section components with custom CSS design tokens. No backend — contact links are client-side. Vercel Analytics tracks page views in production.
+
+```mermaid
+flowchart LR
+  Browser[Browser]
+  CRA[React SPA]
+  Static[public/ assets]
+  Analytics[Vercel Analytics]
+
+  Browser --> CRA
+  CRA --> Static
+  CRA -.-> Analytics
+```
+
+| Layer | Role |
+|-------|------|
+| **App.js** | Section composition and scroll layout |
+| **Components** | Navbar, Hero, About, Skills, Projects, Contact, Footer |
+| **styles/** | Design tokens, base, layout, animations |
+| **public/** | Project screenshots, CV PDF |
+
+> **Note:** Built with **Create React App + JavaScript + custom CSS**, not Next.js or TypeScript.
+
+---
+
+## Features
+
+- Single-page layout with smooth section navigation
+- Project cards with image slideshows and live/GitHub links
+- Contact methods: email, LinkedIn, GitHub, WhatsApp, phone
+- CV download (`public/RICHARD KWAKU OPOKU.pdf`)
+- Scroll-to-top button
+- Vercel Analytics integration
 
 ---
 
 ## Technology Stack
 
-- **Next.js**
-- **React**
-- **TypeScript**
-- **Tailwind CSS**
-- **Framer Motion**
-- **Vercel**
+| Component | Technology |
+|-----------|------------|
+| Framework | Create React App (react-scripts 5) |
+| UI | React 18, plain JavaScript |
+| Styling | Custom CSS (tokens, layout, animations) |
+| Icons | Font Awesome, react-icons |
+| Analytics | @vercel/analytics |
 
 ---
 
@@ -32,54 +70,50 @@ ROIDEV is the professional personal portfolio website of Richard Kwaku Opoku, hi
 
 ### Prerequisites
 
-Ensure you have the required runtimes installed:
-- Git
-- Appropriate package manager (npm/yarn or pip depending on stack)
+- Node.js 16+
 
-### Setup Instructions
+### Install and run
 
-1. **Clone the Repository**
-   ```bash
-   git clone https://github.com/iamroidev/ROIDEV.git
-   cd ROIDEV
-   ```
+```bash
+npm install
+npm start
+# → http://localhost:3000
 
-2. **Install Dependencies**
-   *For Node/Next.js/React Native projects:*
-   ```bash
-   npm install
-   ```
-   *For Python projects:*
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-3. **Configure Environment**
-   Duplicate the env file (if present) and populate variables:
-   ```bash
-   cp .env.example .env
-   ```
-
-4. **Launch Application**
-   *For React/Next.js:*
-   ```bash
-   npm run dev
-   ```
-   *For Expo/React Native:*
-   ```bash
-   npx expo start
-   ```
-   *For Python/Flask:*
-   ```bash
-   python app.py
-   ```
+npm run build    # production build → build/
+npm test
+```
 
 ---
 
-## Contributing
+## Deployment
 
-Contributions are welcome! Please open an issue or submit a pull request with any improvements.
+| Platform | Config |
+|----------|--------|
+| **Vercel** | `vercel.json` — SPA rewrite to `index.html` |
+| **Netlify** | `netlify.toml` — build `build/`, SPA redirect |
+| **GitHub Pages** | `npm run deploy` (uses `gh-pages`) |
+
+No environment variables required.
+
+---
+
+## Project Structure
+
+```
+ROIDEV/
+├── src/
+│   ├── index.js, App.js
+│   ├── Navbar.js, Hero.js, About.js, Skills.js
+│   ├── Projects.js, Contact.js, Footer.js
+│   └── styles/
+├── public/images/
+├── package.json
+├── vercel.json
+└── netlify.toml
+```
+
+---
 
 ## License
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+See repository for license terms.
